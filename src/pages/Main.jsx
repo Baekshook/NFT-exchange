@@ -9,6 +9,7 @@ const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 export default function Main({ account }) {
   const [totalNft, setTotalNft] = useState(0);
   const [mintedNft, setMintedNft] = useState(0);
+  const [myNft, setMyNft] = useState(0);
 
   const getTotalNft = async () => {
     try {
@@ -36,6 +37,11 @@ export default function Main({ account }) {
 
   const getMyNft = async () => {
     try {
+      if (!contract || !account) return;
+
+      const response = await contract.methods.balanceOf(account).call();
+
+      setMyNft(response);
     } catch (error) {
       console.error(error);
     }
@@ -43,11 +49,16 @@ export default function Main({ account }) {
 
   useEffect(() => {
     getTotalNft();
+    getMintedNft();
   }, []);
+
+   useEffect(() => {
+     getMyNft();
+   }, [account]);
 
   return (
     <div>
-      <Intro totalNft={totalNft} mintedNft={mintedNft} />
+      <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft}/>
     </div>
   );
 }
