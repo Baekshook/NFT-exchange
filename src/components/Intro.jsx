@@ -7,7 +7,10 @@ export default function Intro({ totalNft, mintedNft, myNft }) {
 
   return (
     <div className="bg-gradient-to-b from-transparent via-orange-200 to-purple-700 pt-10">
-      <div className="max-w-screen-xl mx-auto px-4">
+      <div className="max-w-screen-xl mx-auto px-4 relative">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-purple-700 text-9xl truncate opacity-50 pointer-events-none">
+          Da Den Bu
+        </div>
         <div className="relative">
           <img
             src={imgSrc}
