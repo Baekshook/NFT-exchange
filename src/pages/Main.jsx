@@ -2,6 +2,7 @@ import Intro from "../components/Intro";
 import Web3 from "web3";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../web3.config";
 import { useEffect, useState } from "react";
+import Nfts from "../components/Nfts";
 
 const web3 = new Web3(window.ethereum);
 const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
@@ -31,7 +32,7 @@ export default function Main({ account }) {
       const response = await contract.methods.totalSupply().call();
 
       setMintedNft(response);
-      setPage(parseInt((response) - 1) / 10 + 1);
+      setPage(parseInt((parseInt(response) - 1) / 10) + 1);
       // 10 - 1 = 9 / 10 = 0 + 1 = 1page
       // 31 - 1 = 30 / 10 = 3 + 1 = 4page
       // 975 - 1 = 974 / 10 = 97 + 1 = 98page
@@ -64,6 +65,7 @@ export default function Main({ account }) {
   return (
     <div>
       <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft} />
+      <Nfts page={page}/>
     </div>
   );
 }
