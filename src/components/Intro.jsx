@@ -1,7 +1,7 @@
 import { GiChaingun } from "react-icons/gi";
 import { CONTRACT_ADDRESS } from "../web3.config";
 
-export default function Intro({ totalNft }) {
+export default function Intro({ totalNft, mintedNft }) {
   const ranNum = Math.floor(Math.random() * 1000) + 1;
   const imgSrc = `${process.env.REACT_APP_IMAGE_URL}/${ranNum}.png`;
 
@@ -38,6 +38,10 @@ export default function Intro({ totalNft }) {
           <div>
             <div className="font-bold">{totalNft}</div>
             <div className="text-gray-300">총 NFT</div>
+          </div>
+          <div className="ml-4">
+            <div className="font-bold">{mintedNft}</div>
+            <div className="text-gray-300">발행된 NFT</div>
           </div>
         </div>
       </div>
