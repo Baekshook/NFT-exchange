@@ -6,7 +6,7 @@ import Header from "./components/Header";
 function App() {
   return (
     <BrowserRouter>
-      <div className="bg-red-100">
+      <div className="min-h-screen bg-gray-950 text-white">
         <Header />
         <Routes>
           <Route path="/" element={<Main />} />
