@@ -10,6 +10,7 @@ export default function Main({ account }) {
   const [totalNft, setTotalNft] = useState(0);
   const [mintedNft, setMintedNft] = useState(0);
   const [myNft, setMyNft] = useState(0);
+  const [page, setPage] = useState(1);
 
   const getTotalNft = async () => {
     try {
@@ -30,6 +31,10 @@ export default function Main({ account }) {
       const response = await contract.methods.totalSupply().call();
 
       setMintedNft(response);
+      setPage(parseInt((response) - 1) / 10 + 1);
+      // 10 - 1 = 9 / 10 = 0 + 1 = 1page
+      // 31 - 1 = 30 / 10 = 3 + 1 = 4page
+      // 975 - 1 = 974 / 10 = 97 + 1 = 98page
     } catch (error) {
       console.error(error);
     }
@@ -52,13 +57,13 @@ export default function Main({ account }) {
     getMintedNft();
   }, []);
 
-   useEffect(() => {
-     getMyNft();
-   }, [account]);
+  useEffect(() => {
+    getMyNft();
+  }, [account]);
 
   return (
     <div>
-      <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft}/>
+      <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft} />
     </div>
   );
 }
