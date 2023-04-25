@@ -1,7 +1,7 @@
 import { GiChaingun } from "react-icons/gi";
 import { CONTRACT_ADDRESS } from "../web3.config";
 
-export default function Intro() {
+export default function Intro({totalNft}) {
   const ranNum = Math.floor(Math.random() * 1000) + 1;
   const imgSrc = `${process.env.REACT_APP_IMAGE_URL}/${ranNum}.png`;
 
@@ -34,6 +34,7 @@ export default function Intro() {
           프로젝트에서 사용되는 환경 변수(environment variable)를 저장하는 데
           사용됩니다.
         </div>
+        <div>{totalNft}</div>
       </div>
     </div>
   );
