@@ -1,3 +1,9 @@
+import Intro from "../components/Intro";
+
 export default function Main() {
-  return <div>Main</div>;
+  return (
+    <div>
+      <Intro />
+    </div>
+  );
 }
