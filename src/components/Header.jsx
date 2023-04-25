@@ -1,5 +1,6 @@
 import { GiChaingun } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { BiWallet } from "react-icons/bi";
 
 export default function Header() {
   return (
@@ -12,7 +13,14 @@ export default function Header() {
           <div className="ml-1 text-xl">BCS_3</div>
         </div>
       </Link>
-      <div>wallet</div>
+      <div>
+        <button className="flex items-center p-2 bg-gray-800 rounded-full">
+          <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center">
+            <BiWallet />
+          </div>
+          <div className="ml-1">Connect</div>
+        </button>
+      </div>
     </header>
   );
 }
