@@ -65,7 +65,7 @@ export default function Nfts({ page }) {
   return (
     <div className="max-w-screen-xl mx-auto pt-4">
       <div>{pageComponent()}</div>
-      <ul className="mt-8">
+      <ul className="mt-8 grid grid-cols-1 xl:grid-cols-2 justify-items-center gap-8">
         {nfts ? (
           nfts.map((v, i) => {
             return (
