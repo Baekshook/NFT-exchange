@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NftCard from "./NftCard";
 
 export default function Nfts({ page }) {
   const [selectedPage, setSelectedPage] = useState(1);
@@ -21,7 +22,7 @@ export default function Nfts({ page }) {
         );
         nftArray.push({ tokenId, metadata: response.data });
       }
-      
+
       setNfts(nftArray);
     } catch (err) {
       console.error(err);
@@ -31,7 +32,7 @@ export default function Nfts({ page }) {
   const onClickPage = (p) => () => {
     setSelectedPage(p);
 
-    getNfts(p)
+    getNfts(p);
   };
 
   const pageComponent = () => {
@@ -64,6 +65,17 @@ export default function Nfts({ page }) {
   return (
     <div className="max-w-screen-xl mx-auto pt-4">
       <div>{pageComponent()}</div>
+      <ul className="mt-8">
+        {nfts ? (
+          nfts.map((v, i) => {
+            return (
+              <NftCard key={i} tokenId={v.tokenId} metadata={v.metadata} />
+            );
+          })
+        ) : (
+          <div>로딩중입니다...</div>
+        )}
+      </ul>
     </div>
   );
 }
