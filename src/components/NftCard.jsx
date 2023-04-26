@@ -1,5 +1,5 @@
-import { TbDiscountCheck } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import OpenseaLogo from "./OpenseaLogo";
 
 export default function NftCard({ tokenId, metadata, mintedNft }) {
   return (
@@ -13,7 +13,7 @@ export default function NftCard({ tokenId, metadata, mintedNft }) {
       <div className="mt-4 text-xl font-bold flex items-center px-4 text-gray-300">
         Da Den Bu
         <div className="w-6 h-6 rounded-full flex justify-center items-center ml-1 text-white">
-          <TbDiscountCheck size={24} color="aqua" />
+          <OpenseaLogo />
         </div>
       </div>
       <div className="mt-4 text-2xl font-bold px-4"># {tokenId}</div>

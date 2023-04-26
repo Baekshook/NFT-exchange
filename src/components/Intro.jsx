@@ -1,5 +1,5 @@
-import { GiChaingun } from "react-icons/gi";
 import { CONTRACT_ADDRESS } from "../web3.config";
+import OpenseaLogo from "./OpenseaLogo";
 
 export default function Intro({ totalNft, mintedNft, myNft }) {
   const ranNum = Math.floor(Math.random() * 1000) + 1;
@@ -21,10 +21,10 @@ export default function Intro({ totalNft, mintedNft, myNft }) {
             Loading...
           </div>
         </div>
-        <div className="mt-4 text-2xl font-bold flex items-center">
+        <div className="mt-4 text-2xl font-bold flex items-center text-black">
           Da Den Bu
-          <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center ml-3 text-gray-950">
-            <GiChaingun size={16} />
+          <div className="w-6 h-6 flex justify-center items-center ml-1 ">
+            <OpenseaLogo />
           </div>
         </div>
         <div className="mt-2 flex items-center text-gray-800">

@@ -47,8 +47,8 @@ export default function Header({ account, setAccount }) {
       <Link to="/">
         <div className="flex items-center text-main">
           <GiChaingun size={28} />
-          <div className="ml-1 text-xl text-cyan-200 ">LIKE</div>
-          <div className="ml-1 text-xl text-yellow-200 ">LION</div>
+          <div className="ml-1 text-xl text-white ">LIKELION</div>
+          {/* <div className="ml-1 text-xl text-yellow-200">LION</div> */}
           <div className="ml-1 text-xl">BCS3</div>
         </div>
       </Link>
