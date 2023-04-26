@@ -5,7 +5,7 @@ export default function NftCard({ tokenId, metadata, mintedNft }) {
   return (
     <div className="rounded-2xl bg-gray-800 pb-4 relative">
       {parseInt(mintedNft) < tokenId && (
-        <div className="absolute bg-black w-full h-full bg-opacity-50 rounded-2xl flex justify-center items-center text-4xl font-bold pb-[120px]">
+        <div className="absolute bg-black w-full h-full bg-opacity-50 rounded-2xl flex justify-center items-center text-2xl font-bold pb-[150px]">
           Not Minted.
         </div>
       )}
