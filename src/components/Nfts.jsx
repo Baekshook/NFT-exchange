@@ -59,9 +59,10 @@ export default function Nfts({ page, mintedNft }) {
     getNfts(1);
   }, []);
 
-  useEffect(() => {
-    console.log(nfts);
-  }, [nfts]);
+  // useEffect(() => {
+  //   console.log(nfts);
+  // }, [nfts]);
+  
   return (
     <div className="max-w-screen-xl mx-auto pt-4">
       <div>{pageComponent()}</div>

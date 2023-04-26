@@ -18,7 +18,7 @@ export default function NftCard({ tokenId, metadata, mintedNft }) {
       </div>
       <div className="mt-4 text-2xl font-bold px-4"># {tokenId}</div>
       <div className="mt-4 text-xl flex justify-end px-4">
-        <Link to={`${tokenId}`}>
+        <Link to={`/${tokenId}`}>
           <button
             disabled={parseInt(mintedNft) < tokenId}
             className="bg-gray-50 text-gray-950 px-4 py-2 rounded-xl hover:bg-gray-500"
