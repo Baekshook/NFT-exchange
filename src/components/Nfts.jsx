@@ -8,15 +8,20 @@ export default function Nfts({ page }) {
   const getNfts = async (p) => {
     try {
       let nftArray = [];
+
+      setNfts();
+
       for (let i = 0; i < 10; i++) {
         const tokenId = i + 1 + (p - 1) * 10;
         // 0 + 1 ~ 9 + 1 = 1 ~ 10
         // if p = 3 -> (3 - 1) * 10 = 20 -> 21~30
+
         let response = await axios.get(
           `${process.env.REACT_APP_JSON_URL}/${tokenId}.json`
         );
         nftArray.push({ tokenId, metadata: response.data });
       }
+      
       setNfts(nftArray);
     } catch (err) {
       console.error(err);
@@ -25,6 +30,8 @@ export default function Nfts({ page }) {
 
   const onClickPage = (p) => () => {
     setSelectedPage(p);
+
+    getNfts(p)
   };
 
   const pageComponent = () => {
@@ -55,7 +62,7 @@ export default function Nfts({ page }) {
     console.log(nfts);
   }, [nfts]);
   return (
-    <div>
+    <div className="max-w-screen-xl mx-auto pt-4">
       <div>{pageComponent()}</div>
     </div>
   );
