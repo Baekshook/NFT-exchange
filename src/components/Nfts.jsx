@@ -31,7 +31,6 @@ export default function Nfts({ page, mintedNft }) {
 
   const onClickPage = (p) => () => {
     setSelectedPage(p);
-
     getNfts(p);
   };
 
@@ -59,24 +58,32 @@ export default function Nfts({ page, mintedNft }) {
     getNfts(1);
   }, []);
 
+
   // useEffect(() => {
   //   console.log(nfts);
   // }, [nfts]);
 
   return (
-    <div className="max-w-screen-xl mx-auto pt-4">
-      <div>{pageComponent()}</div>
-      <ul className="mt-8 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-center gap-8">
-        {nfts ? (
-          nfts.map((v, i) => {
-            return (
-              <NftCard key={i} tokenId={v.tokenId} metadata={v.metadata} mintedNft={mintedNft} />
-            );
-          })
-        ) : (
-          <div>로딩중입니다...</div>
-        )}
-      </ul>
-    </div>
+    <>
+      <div className="max-w-screen-xl mx-auto pt-4">
+        <div>{pageComponent()}</div>
+        <ul className="mt-8 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 justify-items-center gap-8">
+          {nfts ? (
+            nfts.map((v, i) => {
+              return (
+                <NftCard
+                  key={i}
+                  tokenId={v.tokenId}
+                  metadata={v.metadata}
+                  mintedNft={mintedNft}
+                />
+              );
+            })
+          ) : (
+            <div>로딩중입니다...</div>
+          )}
+        </ul>
+      </div>
+    </>
   );
 }

@@ -25,6 +25,7 @@ export default function Main({ account }) {
     }
   };
 
+
   const getMintedNft = async () => {
     try {
       if (!contract) return;
@@ -40,6 +41,7 @@ export default function Main({ account }) {
       console.error(error);
     }
   };
+
 
   const getMyNft = async () => {
     try {
@@ -57,7 +59,7 @@ export default function Main({ account }) {
     getTotalNft();
     getMintedNft();
   }, []);
-
+ 
   useEffect(() => {
     getMyNft();
   }, [account]);
@@ -65,7 +67,7 @@ export default function Main({ account }) {
   return (
     <div>
       <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft} />
-      <Nfts page={page} mintedNft={mintedNft}/>
+      <Nfts page={page} mintedNft={mintedNft} />
     </div>
   );
 }
