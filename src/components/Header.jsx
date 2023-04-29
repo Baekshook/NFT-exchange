@@ -5,7 +5,7 @@ import { FaApple } from "react-icons/fa";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Header({ account, setAccount }) {
+export default function Header({ account, onClickAccount }) {
   const [coinPrice, setCoinPrice] = useState();
 
   const getCoinPrice = async () => {
@@ -20,18 +20,6 @@ export default function Header({ account, setAccount }) {
       ]);
     } catch (err) {
       console.error(err);
-    }
-  };
-
-  const onClickAccount = async () => {
-    try {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-
-      setAccount(accounts[0]);
-    } catch (error) {
-      console.error(error);
     }
   };
 
