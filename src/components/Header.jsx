@@ -19,6 +19,11 @@ export default function Header({ account, onClickAccount }) {
       </Link>
       <div className="flex items-center">
         <CoinPrice />
+        <Link to="/myPage">
+          <button className="p-2 bg-gray-800 rounded-full ml-4">
+            마이 페이지
+          </button>
+        </Link>
         {account ? (
           <div className="flex items-center p-2 bg-gray-800 rounded-full ml-4">
             <div className="bg-main w-6 h-6 rounded-full flex justify-center items-center">
