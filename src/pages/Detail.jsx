@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import OpenseaLogo from "../components/OpenseaLogo";
+import OpenseaLogo from "../components/atoms/OpenseaLogo";
 import { TbFileDescription } from "react-icons/tb";
 import { useParams } from "react-router-dom";
 import Modals from "../components/Modals";

@@ -9,7 +9,7 @@ module.exports = {
       fontFamily: {
         sans: ["Pretendard", "Arial", "sans-serif"],
         hi: ["PyeongChangPeace-Bold", "sans-serif"],
-        bye: ["D2Coding", "sans-serif"],
+        bye: ["NeoDunggeunmoPro-Regular", "sans-serif"],
       },
     },
   },

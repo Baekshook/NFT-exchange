@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { contract, CONTRACT_ADDRESS } from "../web3.config";
+import NftTotals from "../components/molecules/NftTotals";
 
 export default function Minting({ account }) {
   const [counter, setCounter] = useState(0);
@@ -39,17 +40,19 @@ export default function Minting({ account }) {
       alert("민팅 성공!");
     }
   };
+
   return (
     <>
       <div className="bg-purple-300 min-h-screen flex justify-center items-center flex-col">
         <div className="text-black font-bold text-2xl">Mint is Live! 🍀</div>
+        <NftTotals />
         <button
           className="mt-4 bg-black rounded-full p-4 text-purple-300 font-hi text-xl hover:bg-gray-700"
           onClick={onClickMint}
         >
           민팅하기
         </button>
-        <div className="mt-2 text-black font-bold text-2xl">{counter}</div>
+        <div className="mt-2 text-black font-bold text-2xl">{counter}개</div>
         <div className="flex mt-3">
           <button
             onClick={plusCounter}

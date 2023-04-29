@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import OpenseaLogo from "./OpenseaLogo";
+import OpenseaLogo from "./atoms/OpenseaLogo";
 
-export default function NftCard({ tokenId, metadata, mintedNft}) {
+export default function NftCard({ tokenId, metadata, mintedNft }) {
   return (
     <>
       <div className="rounded-2xl bg-gray-800 pb-4 relative">

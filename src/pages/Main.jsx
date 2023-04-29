@@ -4,26 +4,14 @@ import { useEffect, useState } from "react";
 import Nfts from "../components/Nfts";
 
 export default function Main({ account }) {
-  const [totalNft, setTotalNft] = useState(0);
   const [mintedNft, setMintedNft] = useState(0);
   const [myNft, setMyNft] = useState(0);
   const [page, setPage] = useState(1);
 
-  const getTotalNft = async () => {
-    try {
-      if (!contract) return; // contract 없는 경우 아래 로직 실행되지 않게 해주는 코드 (안전장치)
-
-      const response = await contract.methods.totalNft().call();
-
-      setTotalNft(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const getMintedNft = async () => {
     try {
-      if (!contract) return;
+      if (!contract) return; // contract 없는 경우 아래 로직 실행되지 않게 해주는 코드 (안전장치)
 
       const response = await contract.methods.totalSupply().call();
 
@@ -50,7 +38,6 @@ export default function Main({ account }) {
   };
 
   useEffect(() => {
-    getTotalNft();
     getMintedNft();
   }, []);
 
@@ -60,7 +47,7 @@ export default function Main({ account }) {
 
   return (
     <div>
-      <Intro totalNft={totalNft} mintedNft={mintedNft} myNft={myNft} />
+      <Intro mintedNft={mintedNft} myNft={myNft} />
       <Nfts page={page} mintedNft={mintedNft} />
     </div>
   );
