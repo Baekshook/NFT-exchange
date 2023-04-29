@@ -4,6 +4,7 @@ import Main from "./pages/Main";
 import Header from "./components/Header";
 import { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
+import Minting from "./pages/Minting";
 
 function App() {
   const [account, setAccount] = useState("");
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main account={account} />} />
             <Route path="/:tokenId" element={<Detail />} />
+            <Route path="/minting" element={<Minting />}/>
           </Routes>
         </div>
       </BrowserRouter>
