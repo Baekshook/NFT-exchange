@@ -1,5 +1,7 @@
+import Web3 from "web3";
+
 export const CONTRACT_ADDRESS = "0x79030E87138D16716F56c1A0b95072206f1988f1";
-export const CONTRACT_ABI = [
+const CONTRACT_ABI = [
   {
     inputs: [
       {
@@ -543,9 +545,8 @@ export const CONTRACT_ABI = [
   },
 ];
 
-export const SALE_CONTRACT_ADDRESS =
-  "0x76A721f99B2580b712c3C6fb8873C57EB72D65f5";
-export const SALE_CONTRACT_ABI = [
+const SALE_CONTRACT_ADDRESS = "0x76A721f99B2580b712c3C6fb8873C57EB72D65f5";
+const SALE_CONTRACT_ABI = [
   {
     inputs: [
       {
@@ -672,3 +673,10 @@ export const SALE_CONTRACT_ABI = [
     type: "function",
   },
 ];
+
+export const web3 = new Web3(window.ethereum);
+export const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+export const saleContract = new web3.eth.Contract(
+  SALE_CONTRACT_ABI,
+  SALE_CONTRACT_ADDRESS
+);

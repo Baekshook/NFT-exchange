@@ -1,16 +1,7 @@
 import Intro from "../components/Intro";
-import Web3 from "web3";
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../web3.config";
-import { SALE_CONTRACT_ABI, SALE_CONTRACT_ADDRESS } from "../web3.config";
+import { contract } from "../web3.config";
 import { useEffect, useState } from "react";
 import Nfts from "../components/Nfts";
-
-const web3 = new Web3(window.ethereum);
-const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-const saleContract = new web3.eth.Contract(
-  SALE_CONTRACT_ABI,
-  SALE_CONTRACT_ADDRESS
-);
 
 export default function Main({ account }) {
   const [totalNft, setTotalNft] = useState(0);
