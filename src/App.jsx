@@ -35,7 +35,7 @@ function App() {
             <Route path="/" element={<Main account={account} />} />
             <Route path="/:tokenId" element={<Detail />} />
             <Route path="/minting" element={<Minting account={account} />} />
-            <Route path="/myPage" element={<Mypage />} />
+            <Route path="/myPage" element={<Mypage account={account}/>} />
           </Routes>
         </div>
       </BrowserRouter>
