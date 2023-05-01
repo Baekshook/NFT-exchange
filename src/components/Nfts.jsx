@@ -22,7 +22,7 @@ export default function Nfts({ page, mintedNft }) {
         );
         nftArray.push({ tokenId, metadata: response.data });
       }
-
+      console.log(nftArray);
       setNfts(nftArray);
     } catch (err) {
       console.error(err);
