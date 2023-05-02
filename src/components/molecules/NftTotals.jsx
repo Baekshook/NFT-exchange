@@ -21,8 +21,7 @@ export default function NftTotals() {
     }, []);
 
   return (
-    <div className='flex flex-col justify-center items-center text-black font-bold mt-2'>
-      <div>잔여 개수</div>
+    <div className='flex flex-col justify-center items-center text-black font-bold mt-2 text-xl font-bye'>
       <div>{mintedNft} / 1000</div>
     </div>
   )

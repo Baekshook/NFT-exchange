@@ -27,17 +27,24 @@ export default function Minting({ account }) {
       return;
     }
 
+    if (counter === 0) {
+      alert("민팅 개수를 입력하세요!");
+      return;
+    }
+
     try {
-      await contract.methods.batchMint(counter).send({
+      const result = await contract.methods.batchMint(counter).send({
         to: CONTRACT_ADDRESS,
         from: account,
         data: "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
       });
+      if (result != null) {
+        console.log(result);
+        alert("민팅에 성공하였습니다.");
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
       alert("민팅에 실패하였습니다.");
-    } finally {
-      alert("민팅 성공!");
     }
   };
 
