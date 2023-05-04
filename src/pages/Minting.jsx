@@ -1,34 +1,25 @@
 import { useState } from "react";
 import { contract, CONTRACT_ADDRESS } from "../web3.config";
 import NftTotals from "../components/molecules/NftTotals";
+import RandomImg from "../components/molecules/RandomImg";
+import MintCount from "../components/atoms/MintCount";
 
 export default function Minting({ account }) {
   const [counter, setCounter] = useState(0);
 
-  const plusCounter = () => {
-    if (counter >= 5) {
-      alert("최대 민팅 개수는 5개까지 입니다.");
-    } else {
-      setCounter(counter + 1);
-    }
-  };
-
-  const minusCounter = () => {
-    if (counter < 1) {
-      alert("민팅 개수는 음수가 될 수 없습니다.");
-    } else {
-      setCounter(counter - 1);
-    }
-  };
-
   const onClickMint = async () => {
+    if (!account) {
+      alert("ERROR: 메타마스크 지갑을 연결해주세요!");
+      return;
+    }
+
     if (window.ethereum.networkVersion !== "80001") {
       alert("경고! 현재 네트워크가 Mumbai network가 아닙니다.");
       return;
     }
 
     if (counter === 0) {
-      alert("민팅 개수를 입력하세요!");
+      alert("ERROR: 민팅 개수를 입력하세요!");
       return;
     }
 
@@ -51,28 +42,25 @@ export default function Minting({ account }) {
   return (
     <>
       <div className="bg-purple-300 min-h-screen flex justify-center items-center flex-col">
-        <div className="text-black font-bold text-2xl">Mint is Live! 🍀</div>
-        <NftTotals />
-        <button
-          className="mt-4 bg-black rounded-full p-4 text-purple-300 font-hi text-xl hover:bg-gray-700"
-          onClick={onClickMint}
-        >
-          민팅하기
-        </button>
-        <div className="mt-2 text-black font-bold text-2xl">{counter}개</div>
-        <div className="flex mt-3">
-          <button
-            onClick={plusCounter}
-            className="mr-3 bg-black rounded-full p-3 text-purple-300 font-hi text-xl hover:bg-gray-700"
-          >
-            +
-          </button>
-          <button
-            onClick={minusCounter}
-            className="bg-black rounded-full text-purple-300 p-3 font-hi  text-2xl hover:bg-gray-700"
-          >
-            -
-          </button>
+        <div className="text-black font-bold text-3xl mb-7 font-bye">
+          Mint is Live !! 🍀
+        </div>
+        <div className="flex flex-row  gap-28">
+          <div className="flex flex-col gap-5">
+            <RandomImg roundedOption={"rounded-lg"} whSize={"w-60 h-60"} />
+            <NftTotals />
+          </div>
+          <div className="flex flex-col justify-center items-center mb-5">
+            <MintCount counter={counter} setCounter={setCounter} />
+            <button
+              onClick={onClickMint}
+              className="font-bye relative inline-flex items-center justify-center p-1.5 mb-2 mr-2 overflow-hidden text-2xl text-gray-900 rounded-full group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+            >
+              <span className="relative px-7 py-4 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-full group-hover:bg-opacity-0">
+                MINT
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </>

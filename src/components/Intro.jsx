@@ -10,7 +10,7 @@ export default function Intro({ mintedNft, myNft }) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-purple-700 text-9xl truncate opacity-50 pointer-events-none">
           Da Den Bu
         </div>
-        <RandomImg />
+        <RandomImg roundedOption={"rounded-full"} whSize={"w-40 h-40"} />
         <div className="mt-4 text-2xl font-bold flex items-center text-black">
           Da Den Bu
           <div className="w-6 h-6 flex justify-center items-center ml-1 ">
