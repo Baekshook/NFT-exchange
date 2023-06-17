@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NftCard from "./NftCard";
+import { saleContract } from "../web3.config";
 
 export default function Nfts({ page, mintedNft }) {
   const [selectedPage, setSelectedPage] = useState(1);
@@ -20,7 +21,10 @@ export default function Nfts({ page, mintedNft }) {
         let response = await axios.get(
           `${process.env.REACT_APP_JSON_URL}/${tokenId}.json`
         );
-        nftArray.push({ tokenId, metadata: response.data });
+        const nftPrice = await saleContract.methods
+          .getTokenPrice(tokenId)
+          .call();
+        nftArray.push({ tokenId, metadata: response.data, nftPrice });
       }
       console.log(nftArray);
       setNfts(nftArray);
@@ -75,6 +79,7 @@ export default function Nfts({ page, mintedNft }) {
                   key={i}
                   tokenId={v.tokenId}
                   metadata={v.metadata}
+                  nftPrice={v.nftPrice}
                   mintedNft={mintedNft}
                 />
               );

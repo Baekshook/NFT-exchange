@@ -7,7 +7,6 @@ export default function Mypage({ account }) {
   const [myNft, setMyNft] = useState(0);
   const [nfts, setNfts] = useState([]);
   const [saleStatus, setSaleStatus] = useState(false);
-  const [nftPrice, setNftPrice] = useState([])
 
   const getMyNft = async () => {
     try {
@@ -22,7 +21,6 @@ export default function Mypage({ account }) {
   const getNfts = async (p) => {
     try {
       let nftArray = [];
-      let nftPriceArray = [];
       setNfts();
 
       for (let i = 0; i < myNft.length; i++) {
@@ -40,7 +38,6 @@ export default function Mypage({ account }) {
       }
       console.log(nftArray);
       setNfts(nftArray);
-      setNftPrice(nftPriceArray);
     } catch (err) {
       console.error(err);
     }

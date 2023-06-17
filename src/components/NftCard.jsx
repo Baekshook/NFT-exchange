@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import OpenseaLogo from "./atoms/OpenseaLogo";
+import { web3 } from "../web3.config";
 
-export default function NftCard({ tokenId, metadata, mintedNft }) {
+export default function NftCard({ tokenId, metadata, mintedNft, nftPrice }) {
   return (
     <>
       <div className="rounded-2xl bg-gray-800 pb-4 relative">
@@ -21,7 +22,12 @@ export default function NftCard({ tokenId, metadata, mintedNft }) {
             <OpenseaLogo />
           </div>
         </div>
-        <div className="mt-4 text-2xl font-bold px-4"># {tokenId}</div>
+        <div className="flex items-center text-gray-300">
+          <div className="text-2xl font-bold px-4"># {tokenId}</div>
+          <div className="text-lg mt-1 font-bold px-4">
+            {web3.utils.fromWei(nftPrice)} MATIC
+          </div>
+        </div>
         <div className="mt-4 text-xl flex justify-end px-4">
           <Link to={`/${tokenId}`}>
             <button

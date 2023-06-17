@@ -19,7 +19,7 @@ export default function MyNftCard({ tokenId, metadata, nftPrice }) {
         </div>
         <div className="flex items-center text-gray-300">
           <div className="text-2xl font-bold px-4"># {tokenId}</div>
-          <div className="text-xl font-bold px-4">{web3.utils.fromWei(nftPrice)} MATIC</div>
+          <div className="text-lg mt-1 font-bold px-4">{web3.utils.fromWei(nftPrice)} MATIC</div>
         </div>
         <div className="mt-4 text-xl flex justify-end px-4">
           <Link to={`/${tokenId}`}>
