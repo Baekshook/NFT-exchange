@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { contract, SALE_CONTRACT_ADDRESS } from "../web3.config";
+import { contract, SALE_CONTRACT_ADDRESS, saleContract } from "../web3.config";
 import axios from "axios";
 import MyNftCard from "../components/MyNftCard";
 
@@ -7,6 +7,7 @@ export default function Mypage({ account }) {
   const [myNft, setMyNft] = useState(0);
   const [nfts, setNfts] = useState([]);
   const [saleStatus, setSaleStatus] = useState(false);
+  const [nftPrice, setNftPrice] = useState([])
 
   const getMyNft = async () => {
     try {
@@ -21,20 +22,25 @@ export default function Mypage({ account }) {
   const getNfts = async (p) => {
     try {
       let nftArray = [];
-
+      let nftPriceArray = [];
       setNfts();
 
       for (let i = 0; i < myNft.length; i++) {
         let response = await axios.get(
           `${process.env.REACT_APP_JSON_URL}/${myNft[i]}.json`
         );
+        const nftPrice = await saleContract.methods
+          .getTokenPrice(myNft[i])
+          .call();
         nftArray.push({
           tokenId: myNft[i],
           metadata: response.data,
+          nftPrice
         });
       }
       console.log(nftArray);
       setNfts(nftArray);
+      setNftPrice(nftPriceArray);
     } catch (err) {
       console.error(err);
     }
@@ -112,6 +118,7 @@ export default function Mypage({ account }) {
                       key={i}
                       tokenId={v.tokenId}
                       metadata={v.metadata}
+                      nftPrice={v.nftPrice}
                     />
                   );
                 })
