@@ -12,13 +12,13 @@ export default function Mypage({ account }) {
     try {
       const response = await contract.methods.getTokens(account).call();
 
-      setMyNft(response.map((g, i) => g[0]));
+      setMyNft(response.map((g) => g[0]));
     } catch (error) {
       console.error(error);
     }
   };
 
-  const getNfts = async (p) => {
+  const getNfts = async () => {
     try {
       let nftArray = [];
       setNfts();

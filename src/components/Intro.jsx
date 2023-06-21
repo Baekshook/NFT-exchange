@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { CONTRACT_ADDRESS } from "../web3.config";
 import OpenseaLogo from "./atoms/OpenseaLogo";
 import RandomImg from "./molecules/RandomImg";
+import { useToast } from "@chakra-ui/react";
 
 export default function Intro({ mintedNft, myNft }) {
+  const toast = useToast();
   return (
     <div className="bg-gradient-to-b from-transparent via-orange-200 to-purple-700 pt-10">
       <div className="max-w-screen-xl mx-auto px-4 relative">
@@ -47,6 +49,22 @@ export default function Intro({ mintedNft, myNft }) {
             <div className="font-bold">{myNft}</div>
             <div className="text-gray-300">내 NFT</div>
           </div>
+          {/* <div className="ml-4">
+            <button
+              className="text-purple-800 bg-green-500 rounded-full p-2"
+              onClick={() =>
+                toast({
+                  title: "안녕하세요!",
+                  position: "top-right",
+                  variant: "subtle",
+                  status: "success",
+                  isClosable: true,
+                })
+              }
+            >
+              토스트!
+            </button>
+          </div> */}
         </div>
       </div>
     </div>
