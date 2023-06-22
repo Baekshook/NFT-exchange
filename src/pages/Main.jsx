@@ -8,7 +8,6 @@ export default function Main({ account }) {
   const [myNft, setMyNft] = useState(0);
   const [page, setPage] = useState(1);
 
-
   const getMintedNft = async () => {
     try {
       if (!contract) return; // contract 없는 경우 아래 로직 실행되지 않게 해주는 코드 (안전장치)
